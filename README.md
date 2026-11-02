@@ -2,13 +2,17 @@
 
 <h1 align="center">TraderWAI · MCP server</h1>
 
-<p align="center"><b>Backtest, automate and trade from ChatGPT, Claude or Grok.</b><br>
+<p align="center"><b>Backtest, automate and trade from ChatGPT, Claude, Cursor or Grok.</b><br>
 A remote MCP server that connects the AI you already use to your own trading account.</p>
 
 <p align="center">
 <a href="https://traderwai.com">Website</a> ·
 <a href="https://traderwai.com/en/docs">Docs</a> ·
 <a href="https://traderwai.com/en/connect">Setup guides</a>
+</p>
+
+<p align="center">
+<a href="https://cursor.com/install-mcp?name=traderwai&config=eyJ1cmwiOiJodHRwczovL21jcC50cmFkZXJ3YWkuY29tIn0%3D"><img src="https://cursor.com/deeplink/mcp-install-dark.svg" alt="Add TraderWAI MCP server to Cursor" height="32"></a>
 </p>
 
 <p align="center">
@@ -37,7 +41,7 @@ A remote MCP server that connects the AI you already use to your own trading acc
 
 ## Supported platforms
 
-MetaTrader 4 and 5, cTrader, TradeLocker, Match-Trader, DXtrade (beta), Capital.com (beta), Binance and Bybit. Demo and live accounts, including prop-firm accounts. MetaTrader requires the Trader or Max plan (see [Plans and limits](#plans-and-limits)).
+MetaTrader 4 and 5, cTrader, TradeLocker, Match-Trader, DXtrade (beta), Capital.com (beta), tastytrade (US futures, beta), Binance and Bybit. Demo and live accounts, including prop-firm accounts (tastytrade: live accounts only). MetaTrader requires the Trader or Max plan (see [Plans and limits](#plans-and-limits)).
 
 ## Supported AIs
 
@@ -45,7 +49,7 @@ Claude, ChatGPT, Grok, Gemini (Gemini CLI), Perplexity (beta), Cursor and any MC
 
 ## Connect it
 
-You need a free TraderWAI account ([sign up](https://traderwai.com)); the first connection opens a login and consent screen (sign in with Google), and the account is created there if you don't have one.
+You need a free TraderWAI account ([sign up](https://traderwai.com)); the first connection opens a login and consent screen (sign in with Google or Microsoft), and the account is created there if you don't have one.
 
 | AI | How |
 |---|---|
@@ -56,7 +60,7 @@ You need a free TraderWAI account ([sign up](https://traderwai.com)); the first 
 | **Claude Code** | `claude mcp add --transport http traderwai https://mcp.traderwai.com`, then `/mcp` to sign in |
 | **Gemini CLI** | `gemini mcp add --transport http traderwai https://mcp.traderwai.com`, then `/mcp auth traderwai` · [settings.json](examples/gemini-cli/settings.json) |
 | **OpenAI Codex** | `codex mcp add traderwai --url https://mcp.traderwai.com`, then `codex mcp login traderwai` · [config.toml](examples/codex/config.toml) |
-| **Cursor** | Cursor plugin in this repo ([`.cursor-plugin/plugin.json`](.cursor-plugin/plugin.json), [`mcp.json`](mcp.json), [skill](skills/traderwai-trading/SKILL.md)) or [`.cursor/mcp.json`](examples/cursor/.cursor/mcp.json) |
+| **Cursor** | [One-click install](https://cursor.com/install-mcp?name=traderwai&config=eyJ1cmwiOiJodHRwczovL21jcC50cmFkZXJ3YWkuY29tIn0%3D) · [starter project](#use-it-in-cursor) · Cursor plugin in this repo ([`.cursor-plugin/plugin.json`](.cursor-plugin/plugin.json), [`mcp.json`](mcp.json), [skill](skills/traderwai-trading/SKILL.md)) or [`.cursor/mcp.json`](examples/cursor/.cursor/mcp.json) |
 | **VS Code** (GitHub Copilot) | [`.vscode/mcp.json`](examples/vscode/.vscode/mcp.json) |
 | **Any other MCP client** | Add a remote Streamable HTTP server with the URL above, or use the JSON below |
 
@@ -71,6 +75,14 @@ You need a free TraderWAI account ([sign up](https://traderwai.com)); the first 
 ```
 
 Every config file and step list is in [examples/](examples/). Step-by-step guides with screenshots for every AI and platform: [traderwai.com/en/connect](https://traderwai.com/en/connect).
+
+## Use it in Cursor
+
+1. Click **Add to Cursor** above (or paste the JSON into `.cursor/mcp.json`) and confirm the install.
+2. In Cursor Settings → Tools & MCP, click **Connect** next to `traderwai` and sign in with Google or Microsoft.
+3. Open the chat in **Agent** mode and ask for a chart, a backtest or an order.
+
+For a ready-made workspace, use the **[TraderWAI Cursor starter](https://github.com/leonardo-mazzitelli/traderwai-cursor-starter)**: `.cursor/mcp.json`, a project rule with trading guardrails (demo first, explicit confirmation before any order, stop loss always, backtests only through `backtest_strategy`) and example prompts for market structure, backtests, conditional orders and position monitoring.
 
 ## Try it
 
@@ -88,7 +100,7 @@ After connecting, ask your AI for example:
 | Area | Tools |
 |---|---|
 | Market data and charts | `get_chart`, `draw_chart`, `get_ohlc`, `get_quote`, `list_symbols`, `list_timeframes` |
-| Backtesting | `backtest_strategy` |
+| Backtesting and market structure | `backtest_strategy`, `get_market_structure` |
 | Accounts | `get_account_info`, `get_broker_accounts`, `get_broker_account_state`, `create_broker_account`, `update_broker_account`, `delete_broker_account`, `test_broker_account`, `connect_ctrader`, `get_account_groups`, `set_account_group`, `delete_account_group` |
 | Orders and positions | `execute_trade`, `execute_trade_multi`, `get_positions`, `modify_position`, `close_position`, `modify_broker_order`, `cancel_broker_order`, `get_trade_results` |
 | Suggested orders | `suggest_order`, `get_suggested_orders`, `cancel_suggested_order` |
@@ -114,18 +126,20 @@ Charts and live market data are unlimited on every plan. What is limited is acti
 
 | | Free | Plus | Trader | Max |
 |---|---|---|---|---|
-| Price | $0 | $9.90/month or $69/year (7-day free trial) | $29/month or $199/year | $79/month or $549/year |
-| Broker accounts | 2 | 3 | 5 | 10 |
+| Price | $0 | $9.90/month or $69/year | $29/month or $199/year | $79/month or $549/year |
+| Broker accounts | 1 | 3 (one order on several accounts) | 5 | 20 |
 | MetaTrader 4/5 accounts | **Not included** | **Not included** | 1 | 3 |
 | Order executions per day | 5 | 25 | Unlimited | Unlimited |
 | Auto-execution of suggested orders | No (you approve each one) | Yes | Yes | Yes |
-| Active conditional orders | 2 | 5 | 10 | 30 |
+| Conditional orders | 1 new per day (2 active) | 5 new per day | 10 active | Unlimited |
 | Charts marked by the AI (`draw_chart`) per day | 5 | Unlimited | Unlimited | Unlimited |
 | Backtests per day | 5 | 20 | 50 | Unlimited |
-| Backtest history | 7 days | 45 days | 90 days | Full |
+| Backtest history (1-minute data) | 14 days | 6 months | 1 year | Full (2 years) |
 | Risk limits | No | Basic | Basic | Full (prop-firm rules) |
 
-- The Free plan covers cTrader, TradeLocker, Match-Trader, DXtrade (beta), Capital.com (beta), Binance and Bybit; **MetaTrader needs Trader or Max**.
+There are no free trials: on monthly billing, the first month of any paid plan is 50% off.
+
+- The Free plan covers cTrader, TradeLocker, Match-Trader, DXtrade (beta), Capital.com (beta), tastytrade (beta), Binance and Bybit; **MetaTrader needs Trader or Max**.
 - An execution is each order placed on your broker (by your AI, by an order you approved or by a conditional order). Charts, market data and checking positions don't count.
 - When a limit is reached, tools return a `PLAN_LIMIT` error; `get_account_info` shows your plan, usage and limits.
 

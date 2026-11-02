@@ -6,6 +6,8 @@ Notable changes to the hosted TraderWAI MCP server (`https://mcp.traderwai.com`)
 
 ### Repository
 
+- README: "Add to Cursor" one-click install button, "Use it in Cursor" section linking the Cursor starter project, `get_market_structure` in the tool list, tastytrade (beta), Microsoft sign-in and current plan limits.
+- Cursor plugin 1.1.0: description and skill updated (market structure, confirmation before orders, risk limits).
 - Ready-to-copy client configurations in [examples/](examples/): Cursor, VS Code, OpenAI Codex, Gemini CLI and Claude Code, plus step lists for Claude, ChatGPT, Grok and Perplexity.
 - README: Glama badge, hosted/closed-source note, supported AIs and a "Plans and limits" section.
 - Documentation licensed under CC BY 4.0; trademark note kept.

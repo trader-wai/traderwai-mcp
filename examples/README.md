@@ -4,7 +4,7 @@ Ready-to-copy configurations for the hosted TraderWAI MCP server.
 
 - **URL:** `https://mcp.traderwai.com`
 - **Transport:** Streamable HTTP (SSE-only clients are not supported)
-- **Authentication:** OAuth 2.1 with dynamic client registration. There is no API key: the first connection opens a browser window to sign in to TraderWAI (with Google) and approve access. If you don't have a TraderWAI account yet, it is created at that step.
+- **Authentication:** OAuth 2.1 with dynamic client registration. There is no API key: the first connection opens a browser window to sign in to TraderWAI (with Google or Microsoft) and approve access. If you don't have a TraderWAI account yet, it is created at that step.
 
 | Client | File in this folder | Where it goes |
 |---|---|---|
@@ -17,6 +17,8 @@ Ready-to-copy configurations for the hosted TraderWAI MCP server.
 If a file already exists, merge the `traderwai` entry into it instead of replacing the file.
 
 ## Cursor
+
+One click: [Add to Cursor](https://cursor.com/install-mcp?name=traderwai&config=eyJ1cmwiOiJodHRwczovL21jcC50cmFkZXJ3YWkuY29tIn0%3D). Or a ready-made workspace with rules and example prompts: [traderwai-cursor-starter](https://github.com/leonardo-mazzitelli/traderwai-cursor-starter).
 
 ```json
 {
