@@ -18,7 +18,7 @@ If a file already exists, merge the `traderwai` entry into it instead of replaci
 
 ## Cursor
 
-One click: [Add to Cursor](https://cursor.com/install-mcp?name=traderwai&config=eyJ1cmwiOiJodHRwczovL21jcC50cmFkZXJ3YWkuY29tIn0%3D). Or a ready-made workspace with rules and example prompts: [traderwai-cursor-starter](https://github.com/leonardo-mazzitelli/traderwai-cursor-starter).
+One click: [Add to Cursor](https://cursor.com/install-mcp?name=traderwai&config=eyJ1cmwiOiJodHRwczovL21jcC50cmFkZXJ3YWkuY29tIn0%3D). Or a ready-made workspace with rules and example prompts: [traderwai-cursor-starter](https://github.com/trader-wai/traderwai-cursor-starter).
 
 ```json
 {

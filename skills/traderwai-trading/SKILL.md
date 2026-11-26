@@ -5,7 +5,7 @@ description: Use TraderWAI to read live market charts and OHLC data, backtest a 
 
 # TraderWAI
 
-TraderWAI is a hosted MCP server (`https://mcp.traderwai.com`). The first time a tool is used, Cursor opens a sign-in page: the user signs in with Google or Microsoft. Charts, market data and analysis are free and unlimited; acting on an account has plan limits.
+TraderWAI is a hosted MCP server (`https://mcp.traderwai.com`). The first time a tool is used, your agent (Cursor, Grok Bot, Grok Build…) opens a sign-in page: the user signs in with Google or Microsoft. Charts, market data and analysis are free and unlimited; acting on an account has plan limits.
 
 ## Analyse
 - `list_symbols` for the exact symbol ids (e.g. `XAU_USD`, `EUR_USD`, `NAS100_USD`, `BTC_USD`).

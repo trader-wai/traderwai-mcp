@@ -56,6 +56,8 @@ You need a free TraderWAI account ([sign up](https://traderwai.com)); the first 
 | **Claude** (web, desktop, mobile) | Settings → Connectors → Add custom connector → URL `https://mcp.traderwai.com` |
 | **ChatGPT** (any plan, Free included) | chatgpt.com/plugins → Add → Add custom MCP server → URL `https://mcp.traderwai.com`, authentication OAuth → Create as plugin |
 | **Grok** | grok.com/connectors → New connector → Custom → URL `https://mcp.traderwai.com` |
+| **Grok Bot** | Ask Grok Bot: *“Add the remote MCP server https://mcp.traderwai.com”* and sign in on the connect card it shows |
+| **Grok Build** | Plugin in this repo ([`.grok-plugin/plugin.json`](.grok-plugin/plugin.json), [`.mcp.json`](.mcp.json), [skill](skills/traderwai-trading/SKILL.md)) |
 | **Perplexity** (beta; Pro, Max or Enterprise) | Settings → Connectors → Add custom remote connector → URL `https://mcp.traderwai.com` |
 | **Claude Code** | `claude mcp add --transport http traderwai https://mcp.traderwai.com`, then `/mcp` to sign in |
 | **Gemini CLI** | `gemini mcp add --transport http traderwai https://mcp.traderwai.com`, then `/mcp auth traderwai` · [settings.json](examples/gemini-cli/settings.json) |
@@ -82,7 +84,7 @@ Every config file and step list is in [examples/](examples/). Step-by-step guide
 2. In Cursor Settings → Tools & MCP, click **Connect** next to `traderwai` and sign in with Google or Microsoft.
 3. Open the chat in **Agent** mode and ask for a chart, a backtest or an order.
 
-For a ready-made workspace, use the **[TraderWAI Cursor starter](https://github.com/leonardo-mazzitelli/traderwai-cursor-starter)**: `.cursor/mcp.json`, a project rule with trading guardrails (demo first, explicit confirmation before any order, stop loss always, backtests only through `backtest_strategy`) and example prompts for market structure, backtests, conditional orders and position monitoring.
+For a ready-made workspace, use the **[TraderWAI Cursor starter](https://github.com/trader-wai/traderwai-cursor-starter)**: `.cursor/mcp.json`, a project rule with trading guardrails (demo first, explicit confirmation before any order, stop loss always, backtests only through `backtest_strategy`) and example prompts for market structure, backtests, conditional orders and position monitoring.
 
 ## Try it
 
@@ -119,6 +121,12 @@ Every tool carries MCP annotations (`readOnlyHint` / `destructiveHint`), so your
 - Risk limits per account on paid plans (max lot, open positions, trades per day and daily loss; on Max also drawdown, risk per trade, hours and symbols) are enforced by TraderWAI, not by the AI.
 - To report a vulnerability, see [SECURITY.md](SECURITY.md).
 - [Privacy policy](https://traderwai.com/en/privacy) · [Terms](https://traderwai.com/en/terms)
+
+### Network endpoints and credentials
+
+- The plugin only connects to `https://mcp.traderwai.com` (the hosted MCP server). It ships no scripts, hooks or binaries: just the MCP config and a skill (Markdown).
+- Credentials: none stored by the plugin. The client signs in with OAuth 2.1 (Google or Microsoft account) and keeps the token. Broker credentials are entered by the user on traderwai.com, never through the agent.
+- Order tools (`execute_trade`, `suggest_order`, conditional orders…) act only on broker accounts the user connected, within the risk limits set on traderwai.com.
 
 ## Plans and limits
 

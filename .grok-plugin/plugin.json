@@ -1,0 +1,16 @@
+{
+  "name": "traderwai",
+  "displayName": "TraderWAI",
+  "version": "1.2.0",
+  "description": "Live market charts, OHLC data, market structure, strategy backtests on 1-minute data and orders with stop loss and take profit on your own broker account (MetaTrader 4/5, cTrader, TradeLocker, Match-Trader, DXtrade, Capital.com, tastytrade, Binance, Bybit) through the hosted TraderWAI MCP server. Sign in with Google or Microsoft; free plan available.",
+  "author": {
+    "name": "FLEXIN AGILE LTD (TraderWAI)",
+    "email": "info@traderwai.com"
+  },
+  "homepage": "https://traderwai.com",
+  "repository": "https://github.com/trader-wai/traderwai-mcp",
+  "license": "CC-BY-4.0",
+  "keywords": ["traderwai", "traderwai mcp", "traderwai charts", "traderwai backtest", "trader wai"],
+  "logo": "assets/logo.png",
+  "skills": "./skills/"
+}
